@@ -26,4 +26,5 @@ int main()
     char test[] = "Mr John Smith    ";
     urlify(test, 13);
     std::cout << test;
+    return 0;
 }

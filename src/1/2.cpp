@@ -32,4 +32,6 @@ int main()
     bool test = isPermutation("permutation", "titanomupra");
 
     cout << test;
+
+    return 0;
 }

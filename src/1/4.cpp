@@ -26,4 +26,5 @@ bool isPermutationOfPalindrome(char *string)
 int main()
 {
     std::cout << isPermutationOfPalindrome("Tact Coa");
+    return 0;
 }

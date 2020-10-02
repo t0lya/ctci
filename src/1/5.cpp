@@ -46,4 +46,6 @@ int main()
 
     cout << "\npale, bake\n";
     cout << isOneAway("pale", "bake");
+
+    return 0;
 }
