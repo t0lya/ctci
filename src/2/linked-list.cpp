@@ -15,6 +15,9 @@ public:
 
 class LinkedList
 {
+private:
+    int deleteLength;
+
 public:
     Node *head;
     int length;
@@ -40,12 +43,13 @@ public:
             count++;
         }
         length = count;
+        deleteLength = count;
     }
     ~LinkedList()
     {
         Node *current = head;
 
-        while (current)
+        for (size_t i = 0; i < deleteLength; i++)
         {
             Node *next = current->next;
             delete current;
@@ -63,6 +67,19 @@ public:
 
         current->next = new Node(i);
         length++;
+        deleteLength = length;
+    }
+
+    void append(LinkedList &list)
+    {
+        Node *current = head;
+        while (current->next)
+        {
+            current = current->next;
+        }
+
+        current->next = list.head;
+        length += list.length;
     }
 
     void print()
