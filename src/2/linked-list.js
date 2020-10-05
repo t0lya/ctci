@@ -8,6 +8,7 @@ class ListNode {
 class LinkedList {
   constructor(dataArray) {
     this.head = new ListNode(dataArray && dataArray.length ? dataArray[0] : 0);
+    this.length = dataArray.length;
 
     let previous = this.head;
     let current = null;

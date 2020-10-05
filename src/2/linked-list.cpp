@@ -17,6 +17,7 @@ class LinkedList
 {
 public:
     Node *head;
+    int length;
 
     LinkedList() : head{new Node()} {};
     LinkedList(Node *node) : head{node} {};
@@ -38,6 +39,7 @@ public:
             previous = current;
             count++;
         }
+        length = count;
     }
     ~LinkedList()
     {
@@ -60,6 +62,7 @@ public:
         }
 
         current->next = new Node(i);
+        length++;
     }
 
     void print()
