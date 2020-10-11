@@ -19,6 +19,12 @@ class LinkedList {
     }
   }
 
+  insert(data) {
+    const node = new ListNode(data);
+    node.next = this.head;
+    this.head = node;
+  }
+
   print() {
     let current = this.head;
     let list = [];
