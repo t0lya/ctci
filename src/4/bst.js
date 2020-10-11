@@ -1,8 +1,9 @@
 class TreeNode {
-  constructor(data) {
+  constructor(data, parent = null) {
     this.data = data;
     this.left = null;
     this.right = null;
+    this.parent = parent;
   }
 }
 
@@ -18,6 +19,11 @@ class BSTree {
   }
 
   insert(data) {
+    if (!this.head) {
+      this.head = new TreeNode(data);
+      return;
+    }
+
     let current = this.head;
     let previous = null;
 
@@ -26,11 +32,10 @@ class BSTree {
       current = data < current.data ? current.left : current.right;
     }
 
-    if (previous) {
-      previous[data < previous.data ? "left" : "right"] = new TreeNode(data);
-    } else {
-      this.head = new TreeNode(data);
-    }
+    previous[data < previous.data ? "left" : "right"] = new TreeNode(
+      data,
+      previous
+    );
   }
 
   traverse(process, node = this.head) {
