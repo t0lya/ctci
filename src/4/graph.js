@@ -1,11 +1,14 @@
 class Graph {
-  constructor(adjacencyList) {
+  constructor(adjacencyList, directed) {
     this.nodes = adjacencyList || new Map();
+    this.directed = directed || false;
   }
 
   addEdge(src, dest) {
     this.nodes.get(src).push(dest);
-    this.nodes.get(dest).push(src);
+    if (!this.directed) {
+      this.nodes.get(dest).push(src);
+    }
   }
 
   addEdges(edges) {
