@@ -38,6 +38,18 @@ class BSTree {
     );
   }
 
+  getNode(data, head = this.head) {
+    if (!head || head.data === data) {
+      return head;
+    }
+
+    if (data < head.data) {
+      return this.getNode(data, head.left);
+    } else {
+      return this.getNode(data, head.right);
+    }
+  }
+
   traverse(process, node = this.head) {
     if (!node) {
       return;
