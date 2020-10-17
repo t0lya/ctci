@@ -7,11 +7,11 @@ const pathsWithSum = (head, sum, mustIncludeHead = false) => {
 
   const ret =
     (head.data === sum ? 1 : 0) +
+    pathsWithSum(head.left, sum - head.data, true) +
+    pathsWithSum(head.right, sum - head.data, true) +
     (mustIncludeHead
       ? 0
-      : pathsWithSum(head.left, sum) + pathsWithSum(head.right, sum)) +
-    pathsWithSum(head.left, sum - head.data, true) +
-    pathsWithSum(head.right, sum - head.data, true);
+      : pathsWithSum(head.left, sum) + pathsWithSum(head.right, sum));
 
   return ret;
 };
@@ -32,3 +32,8 @@ const pathsWithSum = (head, sum, mustIncludeHead = false) => {
 
   console.log(pathsWithSum(test.head, 8));
 })();
+
+// Time complexity: Sum of 2^k + k*2^k from k=0 until k=treeDepth=logN
+// Second part dominates, and is an arithmetico–geometric sequence
+// This sequence sums to approximately N*logN.
+// Can improve time complexity to O(N) by memoizing results from "mustIncludeHead = true"
